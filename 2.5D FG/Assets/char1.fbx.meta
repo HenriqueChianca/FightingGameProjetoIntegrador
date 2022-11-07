@@ -81,11 +81,43 @@ ModelImporter:
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
-    human: []
+    human:
+    - boneName: Guitar
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: pCube5
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: pCube8
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: pCube9
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
     skeleton:
     - name: char1(Clone)
       parentName: 
-      position: {x: 0, y: 0, z: 0}
+      position: {x: 0.0013, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Body
@@ -93,16 +125,16 @@ ModelImporter:
       position: {x: -0, y: 0.12593177, z: 3.5527136e-17}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 0.67872477, y: 0.16846779, z: 0.67872477}
-    - name: Head
+    - name: Body1
       parentName: char1(Clone)
-      position: {x: -0, y: 0.1671693, z: -0.0023393503}
+      position: {x: -0, y: 0.12593177, z: 0.00047991332}
       rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 2.5406213, y: 2.5406213, z: 2.5406213}
-    - name: LBoot
+      scale: {x: 0.76939374, y: 0.17102805, z: 0.78297853}
+    - name: Eyes
       parentName: char1(Clone)
-      position: {x: -0.0086814845, y: 0.02882771, z: -0.004106288}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
+      position: {x: -0.004063081, y: 0.16985895, z: 0.0027546473}
+      rotation: {x: -0.14417163, y: -0.34209043, z: -0.163128, w: 0.9140996}
+      scale: {x: 1.2865503, y: 0.8805399, z: 0.97600245}
     - name: Guitar
       parentName: char1(Clone)
       position: {x: -0, y: 0.16247028, z: -0.019617721}
@@ -138,14 +170,19 @@ ModelImporter:
       position: {x: 0.00957797, y: 0.0065957257, z: 0.0008423586}
       rotation: {x: 6.123234e-17, y: 1, z: -6.123234e-17, w: -6.123234e-17}
       scale: {x: 0.20481195, y: 0.010876615, z: -0.24640393}
-    - name: Eyes
+    - name: Head
       parentName: char1(Clone)
-      position: {x: -0.004063081, y: 0.16985895, z: 0.0027546473}
-      rotation: {x: -0.14417163, y: -0.34209043, z: -0.163128, w: 0.9140996}
-      scale: {x: 1.2865503, y: 0.8805399, z: 0.97600245}
-    - name: polySurface1
+      position: {x: -0, y: 0.1671693, z: -0.0023393503}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 2.5406213, y: 2.5406213, z: 2.5406213}
+    - name: LBoot
       parentName: char1(Clone)
-      position: {x: -0, y: 0.13671552, z: 0.05613488}
+      position: {x: -0.0086814845, y: 0.02882771, z: -0.004106288}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LBoot1
+      parentName: char1(Clone)
+      position: {x: 0.00868, y: 0.02882771, z: -0.004106288}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: LDrum
@@ -153,21 +190,16 @@ ModelImporter:
       position: {x: -0.064696975, y: 0.15036643, z: -0.004245369}
       rotation: {x: 0, y: 0, z: 0.7034947, w: 0.71070045}
       scale: {x: 0.76533854, y: 0.50831205, z: 0.76533854}
-    - name: Body1
-      parentName: char1(Clone)
-      position: {x: -0, y: 0.12593177, z: 0.00047991332}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 0.76939374, y: 0.17102805, z: 0.78297853}
-    - name: LBoot1
-      parentName: char1(Clone)
-      position: {x: 0.00868, y: 0.02882771, z: -0.004106288}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
     - name: LDrum1
       parentName: char1(Clone)
       position: {x: 0.0647, y: 0.15036643, z: -0.004245369}
       rotation: {x: 0, y: 0, z: 0.7034947, w: 0.71070045}
       scale: {x: 0.76533854, y: -0.508, z: 0.76533854}
+    - name: polySurface1
+      parentName: char1(Clone)
+      position: {x: -0, y: 0.13671552, z: 0.05613488}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -181,8 +213,8 @@ ModelImporter:
     hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 2
+  autoGenerateAvatarMappingIfUnspecified: 0
+  animationType: 3
   humanoidOversampling: 1
   avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
