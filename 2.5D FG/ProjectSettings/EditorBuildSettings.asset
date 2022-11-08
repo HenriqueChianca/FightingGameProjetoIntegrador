@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Cenas/Game.unity
     guid: f89e14cfeba80aa4995913fe5e569ed8
+  - enabled: 1
+    path: Assets/Cenas/MenuGameOver.unity
+    guid: 5175e0e73ade02a488ad7b69ddd22235
   m_configObjects: {}
