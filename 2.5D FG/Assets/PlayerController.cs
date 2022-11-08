@@ -203,6 +203,11 @@ public class PlayerController : MonoBehaviour
         vidaAtual -= dano;
 
         barraVida.SetarVida(vidaAtual);
+
+        if (vidaAtual == 0)
+        {
+            SceneManager.LoadScene("MenuGameOver");
+        }
     }
 
 }
