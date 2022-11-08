@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
 
         //método ataque
 
-        if (Input.GetKeyDown(KeyCode.X) && playerUm)
+        if (Input.GetKeyDown(KeyCode.C) && playerUm)
         {
             Ataque();
             Particulas = true;
