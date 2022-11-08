@@ -123,6 +123,56 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &41201907 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ac67d8a9801f5484692c8cde2f0b42d0, type: 3}
+  m_PrefabInstance: {fileID: 966818073}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &41201910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41201907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b906ae1278541b4c9be4562c6f82048, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerUm: 0
+  pontoDeAtaque: {fileID: 0}
+  alcanceDoAtaque: 1
+  LayerDoOponente:
+    serializedVersion: 2
+    m_Bits: 0
+  Particulas: 0
+  ParticulaDeAtaque: {fileID: 0}
+  vidaMaxima: 100
+  vidaAtual: 0
+  barraVida: {fileID: 0}
+  velocidade: 300
+  ForcaPulo: 700
+  puloDiagonal: 30
+  pushback: 200
+  outroPlayer: {fileID: 0}
+  distanciaParaGirar: 1
+--- !u!54 &41201911
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41201907}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &113061461
 GameObject:
   m_ObjectHideFlags: 0
@@ -5885,7 +5935,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: ac67d8a9801f5484692c8cde2f0b42d0, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ac67d8a9801f5484692c8cde2f0b42d0, type: 3}
       propertyPath: m_LocalScale.x
@@ -5942,6 +5992,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ac67d8a9801f5484692c8cde2f0b42d0, type: 3}
       propertyPath: m_Name
       value: char1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ac67d8a9801f5484692c8cde2f0b42d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -6163,7 +6217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b906ae1278541b4c9be4562c6f82048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerDois: 1
+  playerUm: 1
   pontoDeAtaque: {fileID: 1232160743}
   alcanceDoAtaque: 2.13
   LayerDoOponente:
@@ -11253,7 +11307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b906ae1278541b4c9be4562c6f82048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerDois: 0
+  playerUm: 0
   pontoDeAtaque: {fileID: 1737945092}
   alcanceDoAtaque: 2.14
   LayerDoOponente:
@@ -11435,6 +11489,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a8f32082795a9b345bcbf78f9faa0ece, type: 3}
       propertyPath: m_Name
       value: char2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a8f32082795a9b345bcbf78f9faa0ece, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

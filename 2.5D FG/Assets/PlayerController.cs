@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public bool playerDois;
+    public bool playerUm;
 
     Rigidbody fisica;
 
@@ -73,7 +73,19 @@ public class PlayerController : MonoBehaviour
 
         //método ataque
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.X) && playerUm)
+        {
+            Ataque();
+            Particulas = true;
+            ParticulaDeAtaque.Play();
+
+        }
+        else
+        {
+            Particulas = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.DownArrow) && playerUm == false)
         {
             Ataque();
             Particulas = true;
@@ -86,7 +98,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Debug.Log(Particulas);
-    
+
 
 
         //Movimento
@@ -94,7 +106,7 @@ public class PlayerController : MonoBehaviour
         float movimentoX = Input.GetAxisRaw("Horizontal");
         bool apertouPulo = Input.GetKeyDown(KeyCode.UpArrow);
 
-        if (playerDois)
+        if (playerUm)
         {
             movimentoX = Input.GetAxisRaw("Horizontal2");
             apertouPulo = Input.GetKeyDown(KeyCode.W);
