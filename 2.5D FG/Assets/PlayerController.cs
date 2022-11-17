@@ -189,10 +189,12 @@ public class PlayerController : MonoBehaviour
 
         foreach (Collider oponente in hitPlayer2)
         {
+            if (oponente.gameObject != gameObject)
+            {
+                oponente.GetComponent<PlayerController>().TomarDano(10);
 
-            TomarDano(10);
-
-            Debug.Log("Acertou" + oponente.name);
+                Debug.Log("Acertou" + oponente.name);
+            }
         }
     }
 
@@ -209,5 +211,6 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene("MenuGameOver");
         }
     }
+
 
 }

@@ -2,7 +2,10 @@ fileFormatVersion: 2
 guid: ac67d8a9801f5484692c8cde2f0b42d0
 ModelImporter:
   serializedVersion: 22103
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -203655887218126122
+    second: mixamo.com
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -16,8 +19,7 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
-      human bone 'LeftLowerLeg' not found\n"
+    rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
@@ -55,7 +57,7 @@ ModelImporter:
     bakeAxisConversion: 0
     preserveHierarchy: 0
     skinWeightsMode: 0
-    maxBonesPerVertex: 67
+    maxBonesPerVertex: 4
     minBoneWeight: 0.001
     optimizeBones: 1
     meshOptimizationFlags: -1
@@ -81,125 +83,8 @@ ModelImporter:
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
-    human:
-    - boneName: Guitar
-      humanName: Hips
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: pCube5
-      humanName: LeftUpperLeg
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: pCube8
-      humanName: RightUpperLeg
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: pCube9
-      humanName: Spine
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    skeleton:
-    - name: char1(Clone)
-      parentName: 
-      position: {x: 0.0013, y: 0, z: 0}
-      rotation: {x: 0, y: 0, z: 0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Body
-      parentName: char1(Clone)
-      position: {x: -0, y: 0.12593177, z: 3.5527136e-17}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 0.67872477, y: 0.16846779, z: 0.67872477}
-    - name: Body1
-      parentName: char1(Clone)
-      position: {x: -0, y: 0.12593177, z: 0.00047991332}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 0.76939374, y: 0.17102805, z: 0.78297853}
-    - name: Eyes
-      parentName: char1(Clone)
-      position: {x: -0.004063081, y: 0.16985895, z: 0.0027546473}
-      rotation: {x: -0.14417163, y: -0.34209043, z: -0.163128, w: 0.9140996}
-      scale: {x: 1.2865503, y: 0.8805399, z: 0.97600245}
-    - name: Guitar
-      parentName: char1(Clone)
-      position: {x: -0, y: 0.16247028, z: -0.019617721}
-      rotation: {x: -0.32715753, y: 0, z: -0, w: 0.94496983}
-      scale: {x: 0.3085635, y: 5.8248296, z: 0.21383117}
-    - name: pCube5
-      parentName: Guitar
-      position: {x: -0.009592891, y: 0.005903349, z: 0.0008423586}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 0.20532055, y: 0.010876615, z: 0.24640393}
-    - name: pCube6
-      parentName: Guitar
-      position: {x: -0.009592891, y: 0.0065957257, z: 0.0008423586}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 0.20532055, y: 0.010876615, z: 0.24640393}
-    - name: pCube7
-      parentName: Guitar
-      position: {x: -0.009592891, y: 0.007266019, z: 0.0008423586}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 0.20532055, y: 0.010876615, z: 0.24640393}
-    - name: pCube8
-      parentName: Guitar
-      position: {x: 0.00957797, y: 0.005903349, z: 0.0008423586}
-      rotation: {x: 6.123234e-17, y: 1, z: -6.123234e-17, w: -6.123234e-17}
-      scale: {x: 0.20481195, y: 0.010876615, z: -0.24640393}
-    - name: pCube9
-      parentName: Guitar
-      position: {x: 0.00957797, y: 0.007266019, z: 0.0008423586}
-      rotation: {x: 6.123234e-17, y: 1, z: -6.123234e-17, w: -6.123234e-17}
-      scale: {x: 0.20481195, y: 0.010876615, z: -0.24640393}
-    - name: pCube10
-      parentName: Guitar
-      position: {x: 0.00957797, y: 0.0065957257, z: 0.0008423586}
-      rotation: {x: 6.123234e-17, y: 1, z: -6.123234e-17, w: -6.123234e-17}
-      scale: {x: 0.20481195, y: 0.010876615, z: -0.24640393}
-    - name: Head
-      parentName: char1(Clone)
-      position: {x: -0, y: 0.1671693, z: -0.0023393503}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 2.5406213, y: 2.5406213, z: 2.5406213}
-    - name: LBoot
-      parentName: char1(Clone)
-      position: {x: -0.0086814845, y: 0.02882771, z: -0.004106288}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: LBoot1
-      parentName: char1(Clone)
-      position: {x: 0.00868, y: 0.02882771, z: -0.004106288}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: LDrum
-      parentName: char1(Clone)
-      position: {x: -0.064696975, y: 0.15036643, z: -0.004245369}
-      rotation: {x: 0, y: 0, z: 0.7034947, w: 0.71070045}
-      scale: {x: 0.76533854, y: 0.50831205, z: 0.76533854}
-    - name: LDrum1
-      parentName: char1(Clone)
-      position: {x: 0.0647, y: 0.15036643, z: -0.004245369}
-      rotation: {x: 0, y: 0, z: 0.7034947, w: 0.71070045}
-      scale: {x: 0.76533854, y: -0.508, z: 0.76533854}
-    - name: polySurface1
-      parentName: char1(Clone)
-      position: {x: -0, y: 0.13671552, z: 0.05613488}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
+    human: []
+    skeleton: []
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -213,7 +98,7 @@ ModelImporter:
     hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  autoGenerateAvatarMappingIfUnspecified: 0
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
   avatarSetup: 1
