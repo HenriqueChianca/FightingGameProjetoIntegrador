@@ -43,6 +43,11 @@ public class PlayerController : MonoBehaviour
 
     public float distanciaParaGirar = 1f;
 
+    public Animator animator;
+
+    private float previousXPosition;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +58,8 @@ public class PlayerController : MonoBehaviour
         barraVida.SetarVidaMaxima(vidaMaxima);
 
         Particulas = GetComponent<ParticleSystem>();
+
+        previousXPosition = transform.position.x;
 
 
     }
@@ -111,6 +118,18 @@ public class PlayerController : MonoBehaviour
         {
             movimentoX = Input.GetAxisRaw("Horizontal2");
             apertouPulo = Input.GetKeyDown(KeyCode.W);
+
+            if (movimentoX < 0)
+            {
+                // Toca a animação de movimento para a esquerda
+                animator.SetBool("AndouPraTras", true);
+            }
+            // Se o jogador parar de se mover para a esquerda (moveInput >= 0), desativa a animação
+            else if (movimentoX >= 0)
+            {
+                // Desativa a animação de movimento para a esquerda
+                animator.SetBool("AndouPraTras", false);
+            }
         }
 
         if (estaNoChao == true)
