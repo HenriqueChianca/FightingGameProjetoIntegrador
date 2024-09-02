@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
@@ -47,6 +49,15 @@ public class PlayerController : MonoBehaviour
 
     private float previousXPosition;
 
+    private bool wasGroundedLastFrame;
+
+    private bool hasJumped;
+
+    private bool olhandoParaDireita = true;
+
+    public float flipThreshold = 0.1f;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -61,6 +72,11 @@ public class PlayerController : MonoBehaviour
 
         previousXPosition = transform.position.x;
 
+        wasGroundedLastFrame = false;
+
+        hasJumped = false;
+
+        estaNoChao = true;
 
     }
 
@@ -68,16 +84,20 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //Girar
-        if(outroPlayer.position.x < transform.position.x - distanciaParaGirar)
+        if(outroPlayer.position.x < transform.position.x - distanciaParaGirar && olhandoParaDireita)
         {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
+            // transform.rotation = Quaternion.Euler(0, 180, 0);
+            Flip();
+            
         }
-        else if(outroPlayer.position.x > transform.position.x + distanciaParaGirar)
+        else if(outroPlayer.position.x > transform.position.x + distanciaParaGirar && !olhandoParaDireita)
         {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            //transform.rotation = Quaternion.Euler(0, 0, 0);
+            Flip();
+            
         }
 
-
+        
 
         //método ataque
 
@@ -119,17 +139,62 @@ public class PlayerController : MonoBehaviour
             movimentoX = Input.GetAxisRaw("Horizontal2");
             apertouPulo = Input.GetKeyDown(KeyCode.W);
 
-            if (movimentoX < 0)
+            if (!estaNoChao)
             {
-                // Toca a animação de movimento para a esquerda
-                animator.SetBool("AndouPraTras", true);
+                animator.SetBool("Pulou", true);
             }
-            // Se o jogador parar de se mover para a esquerda (moveInput >= 0), desativa a animação
-            else if (movimentoX >= 0)
+            else
             {
-                // Desativa a animação de movimento para a esquerda
-                animator.SetBool("AndouPraTras", false);
+                animator.SetBool("Pulou", false);
             }
+
+            if (olhandoParaDireita)
+            {
+
+
+                if (movimentoX > 0)
+                {
+                    animator.SetBool("AndouPraFrente", true);
+                    animator.SetBool("AndouPraTras", false);
+                }
+                else if (movimentoX < 0)
+                {
+                    animator.SetBool("AndouPraFrente", false);
+                    animator.SetBool("AndouPraTras", true);
+                }
+
+                else
+                {
+                    animator.SetBool("AndouPraFrente", false);
+                    animator.SetBool("AndouPraTras", false);
+                }
+
+
+                // FlipCharacter();
+
+                
+            }
+
+            else 
+            {
+                if (movimentoX > 0)
+                {
+                    animator.SetBool("AndouPraFrente", false);
+                    animator.SetBool("AndouPraTras", true);
+                }
+                else if (movimentoX < 0)
+                {
+                    animator.SetBool("AndouPraFrente", true);
+                    animator.SetBool("AndouPraTras", false);
+                }
+
+                else
+                {
+                    animator.SetBool("AndouPraFrente", false);
+                    animator.SetBool("AndouPraTras", false);
+                }
+            }
+         
         }
 
         if (estaNoChao == true)
@@ -142,13 +207,25 @@ public class PlayerController : MonoBehaviour
 
 
 
-        if (apertouPulo && estaNoChao)
+        if (apertouPulo && estaNoChao && hasJumped)
         {
             fisica.velocity = Vector3.zero;
             fisica.AddForce(puloDiagonal * movimentoX, ForcaPulo, 0, ForceMode.Impulse);
 
+            animator.SetTrigger("Jump");
+
         }
 
+
+
+        if (estaNoChao && !wasGroundedLastFrame)
+        {
+            animator.ResetTrigger("Jump");
+            animator.SetBool("Pulou", false);
+            hasJumped = true;
+        }
+
+        wasGroundedLastFrame = estaNoChao;
         /* if (Input.GetKeyDown(KeyCode.Space))
          {
 
@@ -199,6 +276,28 @@ public class PlayerController : MonoBehaviour
         {
             estaNoChao = false;
         }
+    }
+
+
+    //flip
+
+    private void Flip()
+    {
+        olhandoParaDireita = !olhandoParaDireita;
+
+        Vector3 scaler = transform.localScale;
+        scaler.x *= -1;
+        transform.localScale = scaler;
+
+
+       /* if (olhandoParaDireita )
+        {
+            animator.SetFloat("MoveDirection", 1);
+        }
+        else
+        {
+            animator.SetFloat("MoveDirection", -1);
+        }*/
     }
 
     //Ataque

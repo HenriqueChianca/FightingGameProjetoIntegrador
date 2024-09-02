@@ -6265,6 +6265,7 @@ MonoBehaviour:
   outroPlayer: {fileID: 1544922468}
   distanciaParaGirar: 1
   animator: {fileID: 1047001743}
+  flipThreshold: 0.1
 --- !u!54 &1082059038
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11398,7 +11399,8 @@ MonoBehaviour:
   pushback: 1000
   outroPlayer: {fileID: 1082059042}
   distanciaParaGirar: 1
-  animator: {fileID: 0}
+  animator: {fileID: 1875132167}
+  flipThreshold: 0.1
 --- !u!54 &1544922464
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11506,7 +11508,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544922462}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 15.75, y: 4.82, z: 0.8}
   m_LocalScale: {x: 2.2293, y: 3.5004468, z: 2.2293}
   m_ConstrainProportionsScale: 0
@@ -11517,7 +11519,7 @@ Transform:
   - {fileID: 1875132166}
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1569341490
 GameObject:
   m_ObjectHideFlags: 0
@@ -12671,6 +12673,11 @@ PrefabInstance:
 --- !u!4 &1875132166 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a8f32082795a9b345bcbf78f9faa0ece, type: 3}
+  m_PrefabInstance: {fileID: 1875132165}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1875132167 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: a8f32082795a9b345bcbf78f9faa0ece, type: 3}
   m_PrefabInstance: {fileID: 1875132165}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2088046780
