@@ -1,21 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class PlayerController : MonoBehaviour
+public class Player2Controller : MonoBehaviour
 {
-    public bool playerUm;
+    public Rigidbody fisica;
 
-    Rigidbody fisica;
-
-    // ComabteParte
+    // Comabte Parte
     public Transform pontoDeAtaque;
     public float alcanceDoAtaque = 1f;
     public LayerMask LayerDoOponente;
-    public bool Particulas;
     public ParticleSystem ParticulaDeAtaque;
 
     // Vida Parte
@@ -37,76 +32,55 @@ public class PlayerController : MonoBehaviour
     private bool wasGroundedLastFrame;
     private bool hasJumped;
     private bool olhandoParaDireita = true;
+
     public float flipThreshold = 0.1f;
 
-    // Start is called before the first frame update
+    // Start é chamado antes do primeiro frame
     void Start()
     {
         fisica = GetComponent<Rigidbody>();
         vidaAtual = vidaMaxima;
         barraVida.SetarVidaMaxima(vidaMaxima);
-        Particulas = GetComponent<ParticleSystem>();
         previousXPosition = transform.position.x;
         wasGroundedLastFrame = false;
         hasJumped = false;
         estaNoChao = true;
     }
 
-    // Update is called once per frame
+    // Update é chamado uma vez por frame
     void Update()
     {
-        // método ataque
-        if (Input.GetKeyDown(KeyCode.C) && playerUm)
+        // Mantém o Collider na posição do jogador
+        BoxCollider collider = GetComponent<BoxCollider>();
+
+        if (collider != null)
+        {
+            // Alinha o collider à posição do jogador em tempo real
+            collider.center = transform.position;
+        }
+
+
+        // Método de ataque
+        if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             Ataque();
-            Particulas = true;
             ParticulaDeAtaque.Play();
         }
-        else
-        {
-            Particulas = false;
-        }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow) && playerUm == false)
-        {
-            Ataque();
-            Particulas = true;
-            ParticulaDeAtaque.Play();
-        }
-        else
-        {
-            Particulas = false;
-        }
+        // Movimentação e Flip
+        float movimentoX = Input.GetAxisRaw("Horizontal");
+        bool apertouPulo = Input.GetKeyDown(KeyCode.UpArrow);
 
-        // Movimento
-        if (playerUm)
-        {
-            if (outroPlayer.position.x < transform.position.x - distanciaParaGirar && olhandoParaDireita)
-            {
-                Flip();
-            }
-            else if (outroPlayer.position.x > transform.position.x + distanciaParaGirar && !olhandoParaDireita)
-            {
-                Flip();
-            }
-        }
-        else
-        {
-            if (outroPlayer.position.x > transform.position.x - distanciaParaGirar && olhandoParaDireita)
-            {
-                Flip();
-            }
-            else if (outroPlayer.position.x < transform.position.x + distanciaParaGirar && !olhandoParaDireita)
-            {
-                Flip();
-            }
-        }
-
-        float movimentoX = Input.GetAxisRaw(playerUm ? "Horizontal2" : "Horizontal");
-        bool apertouPulo = Input.GetKeyDown(playerUm ? KeyCode.W : KeyCode.UpArrow);
-
-        // Atualizar o MoveDirection para o Animator (mantém o valor após o flip)
         AtualizarMoveDirection(movimentoX);
+
+        if (outroPlayer.position.x > transform.position.x - distanciaParaGirar && olhandoParaDireita)
+        {
+            Flip();
+        }
+        else if (outroPlayer.position.x < transform.position.x + distanciaParaGirar && !olhandoParaDireita)
+        {
+            Flip();
+        }
 
         // Movimentação no chão
         if (estaNoChao)
@@ -115,9 +89,9 @@ public class PlayerController : MonoBehaviour
             fisica.velocity = targetVelocity;
         }
 
-        // Controlar animações de movimento
         AtualizarAnimacoes(movimentoX);
 
+        // Pulo
         if (apertouPulo && estaNoChao && !hasJumped)
         {
             fisica.velocity = Vector3.zero;
@@ -144,12 +118,10 @@ public class PlayerController : MonoBehaviour
             estaNoChao = true;
         }
 
-        if (transform.position.y > collision.transform.position.y && estaNoChao == false &&
-            collision.gameObject.tag == "Player")
+        if (transform.position.y > collision.transform.position.y && estaNoChao == false && collision.gameObject.tag == "Player")
         {
             fisica.velocity = Vector3.zero;
             fisica.AddForce(-transform.right * pushback);
-            Debug.Log("Pushback: Eu," + gameObject + ", bati em: " + collision.gameObject);
         }
     }
 
@@ -161,6 +133,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Função que atualiza a direção de movimento no Animator
     private void AtualizarMoveDirection(float movimentoX)
     {
         if (olhandoParaDireita)
@@ -173,16 +146,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Função para controlar as animações do Player 2
     private void AtualizarAnimacoes(float movimentoX)
     {
         if (olhandoParaDireita)
         {
-            if (movimentoX > 0)
+            if (movimentoX < 0)
             {
                 animator.SetBool("AndouPraFrente", true);
                 animator.SetBool("AndouPraTras", false);
             }
-            else if (movimentoX < 0)
+            else if (movimentoX > 0)
             {
                 animator.SetBool("AndouPraFrente", false);
                 animator.SetBool("AndouPraTras", true);
@@ -195,12 +169,12 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if (movimentoX > 0)
+            if (movimentoX < 0)
             {
                 animator.SetBool("AndouPraFrente", false);
                 animator.SetBool("AndouPraTras", true);
             }
-            else if (movimentoX < 0)
+            else if (movimentoX > 0)
             {
                 animator.SetBool("AndouPraFrente", true);
                 animator.SetBool("AndouPraTras", false);
@@ -213,6 +187,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Flip para inverter o Player 2
     private void Flip()
     {
         olhandoParaDireita = !olhandoParaDireita;
@@ -222,27 +197,27 @@ public class PlayerController : MonoBehaviour
         transform.localScale = scaler;
     }
 
-    // Ataque
+    // Função de ataque
     void Ataque()
     {
-        Collider[] hitPlayer2 = Physics.OverlapSphere(pontoDeAtaque.position, alcanceDoAtaque, LayerDoOponente);
+        Collider[] hitPlayer1 = Physics.OverlapSphere(pontoDeAtaque.position, alcanceDoAtaque, LayerDoOponente);
 
-        foreach (Collider oponente in hitPlayer2)
+        foreach (Collider oponente in hitPlayer1)
         {
             if (oponente.gameObject != gameObject)
             {
                 oponente.GetComponent<PlayerController>().TomarDano(10);
-                Debug.Log("Acertou" + oponente.name);
             }
         }
     }
 
+    // Função de tomar dano
     public void TomarDano(int dano)
     {
         vidaAtual -= dano;
         barraVida.SetarVida(vidaAtual);
 
-        if (vidaAtual == 0)
+        if (vidaAtual <= 0)
         {
             SceneManager.LoadScene("MenuGameOver");
         }
