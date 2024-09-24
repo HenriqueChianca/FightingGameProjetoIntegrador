@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     // ComabteParte
     public Transform pontoDeAtaque;
     public float alcanceDoAtaque = 1f;
-    public LayerMask LayerDoOponente;
+    public LayerMask LayerDoP2;
     public bool Particulas;
     public ParticleSystem ParticulaDeAtaque;
 
@@ -225,13 +225,13 @@ public class PlayerController : MonoBehaviour
     // Ataque
     void Ataque()
     {
-        Collider[] hitPlayer2 = Physics.OverlapSphere(pontoDeAtaque.position, alcanceDoAtaque, LayerDoOponente);
+        Collider[] hitPlayer2 = Physics.OverlapSphere(pontoDeAtaque.position, alcanceDoAtaque, LayerDoP2);
 
         foreach (Collider oponente in hitPlayer2)
         {
             if (oponente.gameObject != gameObject)
             {
-                oponente.GetComponent<PlayerController>().TomarDano(10);
+                oponente.GetComponent<Player2Controller>().TomarDano(10);
                 Debug.Log("Acertou" + oponente.name);
             }
         }
