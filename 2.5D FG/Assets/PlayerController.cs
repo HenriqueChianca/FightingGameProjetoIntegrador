@@ -15,8 +15,9 @@ public class PlayerController : MonoBehaviour
     public Transform pontoDeAtaque;
     public float alcanceDoAtaque = 1f;
     public LayerMask LayerDoP2;
-    public bool Particulas;
-    public ParticleSystem ParticulaDeAtaque;
+    public float poriximityBlockP1 = 1f;
+    //public bool Particulas;
+    //public ParticleSystem ParticulaDeAtaque;
 
     // Vida Parte
     public int vidaMaxima = 100;
@@ -45,7 +46,7 @@ public class PlayerController : MonoBehaviour
         fisica = GetComponent<Rigidbody>();
         vidaAtual = vidaMaxima;
         barraVida.SetarVidaMaxima(vidaMaxima);
-        Particulas = GetComponent<ParticleSystem>();
+       // Particulas = GetComponent<ParticleSystem>();
         previousXPosition = transform.position.x;
         wasGroundedLastFrame = false;
         hasJumped = false;
@@ -59,23 +60,25 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C) && playerUm)
         {
             Ataque();
-            Particulas = true;
-            ParticulaDeAtaque.Play();
+            animator.SetBool("Apertou", true);
+            //Particulas = true;
+            // ParticulaDeAtaque.Play();
         }
         else
         {
-            Particulas = false;
+            animator.SetBool("Apertou", false);
+            // Particulas = false;
         }
 
         if (Input.GetKeyDown(KeyCode.DownArrow) && playerUm == false)
         {
             Ataque();
-            Particulas = true;
-            ParticulaDeAtaque.Play();
+            //Particulas = true;
+            //ParticulaDeAtaque.Play();
         }
         else
         {
-            Particulas = false;
+            //Particulas = false;
         }
 
         // Movimento

@@ -11,7 +11,8 @@ public class Player2Controller : MonoBehaviour
     public Transform pontoDeAtaque;
     public float alcanceDoAtaque = 1f;
     public LayerMask LayerDoOponente;
-    public ParticleSystem ParticulaDeAtaque;
+    public float poriximityBlockP2 = 1f;
+   // public ParticleSystem ParticulaDeAtaque;
 
     // Vida Parte
     public int vidaMaxima = 100;
@@ -64,7 +65,12 @@ public class Player2Controller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             Ataque();
-            ParticulaDeAtaque.Play();
+            animator.SetBool("Apertou",true);
+            //ParticulaDeAtaque.Play();
+        }
+        else
+        {
+            animator.SetBool("Apertou", false);
         }
 
         // Movimentação e Flip
