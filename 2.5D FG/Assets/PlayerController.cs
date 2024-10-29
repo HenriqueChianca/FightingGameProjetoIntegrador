@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public float alcanceDoAtaque = 1f;
     public LayerMask LayerDoP2;
     public float poriximityBlockP1 = 1f;
+    private AudioSource AudioSource;
     //public bool Particulas;
     //public ParticleSystem ParticulaDeAtaque;
 
@@ -51,6 +52,7 @@ public class PlayerController : MonoBehaviour
         wasGroundedLastFrame = false;
         hasJumped = false;
         estaNoChao = true;
+        AudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -59,8 +61,10 @@ public class PlayerController : MonoBehaviour
         // método ataque
         if (Input.GetKeyDown(KeyCode.C) && playerUm)
         {
-            Ataque();
             animator.SetBool("Apertou", true);
+            Ataque();
+            
+         
             //Particulas = true;
             // ParticulaDeAtaque.Play();
         }
@@ -236,6 +240,7 @@ public class PlayerController : MonoBehaviour
             {
                 oponente.GetComponent<Player2Controller>().TomarDano(10);
                 Debug.Log("Acertou" + oponente.name);
+                AudioSource.Play();
             }
         }
     }

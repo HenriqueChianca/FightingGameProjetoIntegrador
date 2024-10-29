@@ -12,6 +12,7 @@ public class Player2Controller : MonoBehaviour
     public float alcanceDoAtaque = 1f;
     public LayerMask LayerDoOponente;
     public float poriximityBlockP2 = 1f;
+    private AudioSource AudioSource;
    // public ParticleSystem ParticulaDeAtaque;
 
     // Vida Parte
@@ -46,6 +47,7 @@ public class Player2Controller : MonoBehaviour
         wasGroundedLastFrame = false;
         hasJumped = false;
         estaNoChao = true;
+        AudioSource = GetComponent<AudioSource>();
     }
 
     // Update é chamado uma vez por frame
@@ -66,6 +68,7 @@ public class Player2Controller : MonoBehaviour
         {
             Ataque();
             animator.SetBool("Apertou",true);
+           
             //ParticulaDeAtaque.Play();
         }
         else
@@ -213,6 +216,7 @@ public class Player2Controller : MonoBehaviour
             if (oponente.gameObject != gameObject)
             {
                 oponente.GetComponent<PlayerController>().TomarDano(10);
+                AudioSource.Play();
             }
         }
     }
