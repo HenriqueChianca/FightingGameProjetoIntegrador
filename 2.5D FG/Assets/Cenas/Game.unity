@@ -6016,7 +6016,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &993463429
 Transform:
   m_ObjectHideFlags: 0
@@ -6452,6 +6452,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: ac67d8a9801f5484692c8cde2f0b42d0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: ac67d8a9801f5484692c8cde2f0b42d0, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 4b7fcc7ee9553fa4cbc01991f4a43edd, type: 2}
@@ -6479,7 +6483,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5866666021909216657, guid: ac67d8a9801f5484692c8cde2f0b42d0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6487,11 +6492,6 @@ PrefabInstance:
 --- !u!4 &1047001742 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ac67d8a9801f5484692c8cde2f0b42d0, type: 3}
-  m_PrefabInstance: {fileID: 1047001741}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1047001743 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: ac67d8a9801f5484692c8cde2f0b42d0, type: 3}
   m_PrefabInstance: {fileID: 1047001741}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1082059036
@@ -6509,6 +6509,7 @@ GameObject:
   - component: {fileID: 1082059038}
   - component: {fileID: 1082059037}
   - component: {fileID: 1082059043}
+  - component: {fileID: 1082059044}
   m_Layer: 6
   m_Name: Player1
   m_TagString: Player
@@ -6544,7 +6545,7 @@ MonoBehaviour:
   pushback: 1000
   outroPlayer: {fileID: 1544922468}
   distanciaParaGirar: 1
-  animator: {fileID: 1047001743}
+  animator: {fileID: 1082059044}
   flipThreshold: 0.1
 --- !u!54 &1082059038
 Rigidbody:
@@ -6762,6 +6763,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &1082059044
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082059036}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: ac67d8a9801f5484692c8cde2f0b42d0, type: 3}
+  m_Controller: {fileID: 9100000, guid: 4b7fcc7ee9553fa4cbc01991f4a43edd, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1224674369
 GameObject:
   m_ObjectHideFlags: 0
@@ -6891,7 +6913,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1232160742}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.68, y: 1.83, z: -0.1}
+  m_LocalPosition: {x: 2.06, y: 1.83, z: -0.1}
   m_LocalScale: {x: 45.269135, y: 45.269135, z: 45.269135}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6915,7 +6937,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1291236329
 Transform:
   m_ObjectHideFlags: 0

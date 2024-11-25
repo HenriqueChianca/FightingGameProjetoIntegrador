@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C) && playerUm)
         {
             animator.SetBool("Apertou", true);
-            Ataque();
+           // Ataque();
             
          
             //Particulas = true;
@@ -230,8 +230,14 @@ public class PlayerController : MonoBehaviour
     }
 
     // Ataque
-    void Ataque()
+   public void Ataque()
     {
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Apertou"))
+        {
+            Debug.Log("Evento de ataque disparado.");
+           // return; // Sai do método se a animação não estiver ativa.
+        }
+
         Collider[] hitPlayer2 = Physics.OverlapSphere(pontoDeAtaque.position, alcanceDoAtaque, LayerDoP2);
 
         foreach (Collider oponente in hitPlayer2)
