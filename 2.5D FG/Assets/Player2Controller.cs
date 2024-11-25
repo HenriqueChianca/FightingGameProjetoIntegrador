@@ -66,7 +66,7 @@ public class Player2Controller : MonoBehaviour
         // Método de ataque
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            Ataque();
+            //Ataque();
             animator.SetBool("Apertou",true);
            
             //ParticulaDeAtaque.Play();
@@ -209,6 +209,12 @@ public class Player2Controller : MonoBehaviour
     // Função de ataque
     void Ataque()
     {
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Apertou"))
+        {
+            Debug.Log("Evento de ataque disparado.");
+            // return; // Sai do método se a animação não estiver ativa.
+        }
+
         Collider[] hitPlayer1 = Physics.OverlapSphere(pontoDeAtaque.position, alcanceDoAtaque, LayerDoOponente);
 
         foreach (Collider oponente in hitPlayer1)
