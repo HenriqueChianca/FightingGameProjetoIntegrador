@@ -13,7 +13,8 @@ public class Player2Controller : MonoBehaviour
     public LayerMask LayerDoOponente;
     public float poriximityBlockP2 = 1f;
     private AudioSource AudioSource;
-   // public ParticleSystem ParticulaDeAtaque;
+    public float pushbackStrike = 10;
+    public ParticleSystem ParticulaDeAtaque;
 
     // Vida Parte
     public int vidaMaxima = 100;
@@ -53,6 +54,11 @@ public class Player2Controller : MonoBehaviour
     // Update é chamado uma vez por frame
     void Update()
     {
+        if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
+        {
+            return; // Interrompe o Update, impedindo movimentação
+        }
+
         // Mantém o Collider na posição do jogador
         BoxCollider collider = GetComponent<BoxCollider>();
 
@@ -81,6 +87,7 @@ public class Player2Controller : MonoBehaviour
         bool apertouPulo = Input.GetKeyDown(KeyCode.UpArrow);
 
         AtualizarMoveDirection(movimentoX);
+        AtualizarAnimacoes(movimentoX);
 
         if (outroPlayer.position.x > transform.position.x - distanciaParaGirar && olhandoParaDireita)
         {
@@ -223,7 +230,18 @@ public class Player2Controller : MonoBehaviour
             {
                 oponente.GetComponent<PlayerController>().TomarDano(10);
                 AudioSource.Play();
+                Vector3 direcaoEmpurrao = (transform.position - oponente.transform.position).normalized;
+                direcaoEmpurrao.y = 0; // Zerar o empurrão vertical
+
+                // Adicionar força de empurrão ao atacante
+                fisica.AddForce(direcaoEmpurrao * pushbackStrike, ForceMode.Impulse);
             }
+        }
+
+        if (ParticulaDeAtaque != null)
+        {
+            ParticulaDeAtaque.transform.position = pontoDeAtaque.position; // Posiciona a partícula no ponto do ataque
+            ParticulaDeAtaque.Play(); // Toca o sistema de partículas
         }
     }
 

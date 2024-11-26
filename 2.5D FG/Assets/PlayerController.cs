@@ -17,8 +17,9 @@ public class PlayerController : MonoBehaviour
     public LayerMask LayerDoP2;
     public float poriximityBlockP1 = 1f;
     private AudioSource AudioSource;
-    //public bool Particulas;
-    //public ParticleSystem ParticulaDeAtaque;
+    public bool Particulas;
+    public float pushbackStrike = 10;
+    public ParticleSystem ParticulaDeAtaque;
 
     // Vida Parte
     public int vidaMaxima = 100;
@@ -58,6 +59,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
+        {
+            return; // Interrompe o Update, impedindo movimentação
+        }
+
         // método ataque
         if (Input.GetKeyDown(KeyCode.C) && playerUm)
         {
@@ -114,6 +120,7 @@ public class PlayerController : MonoBehaviour
 
         // Atualizar o MoveDirection para o Animator (mantém o valor após o flip)
         AtualizarMoveDirection(movimentoX);
+        AtualizarAnimacoes(movimentoX);
 
         // Movimentação no chão
         if (estaNoChao)
@@ -247,7 +254,19 @@ public class PlayerController : MonoBehaviour
                 oponente.GetComponent<Player2Controller>().TomarDano(10);
                 Debug.Log("Acertou" + oponente.name);
                 AudioSource.Play();
+
+                Vector3 direcaoEmpurrao = (transform.position - oponente.transform.position).normalized;
+                direcaoEmpurrao.y = 0; // Zerar o empurrão vertical
+
+                // Adicionar força de empurrão ao atacante
+                fisica.AddForce(direcaoEmpurrao * pushbackStrike, ForceMode.Impulse);
             }
+        }
+
+        if (ParticulaDeAtaque != null)
+        {
+            ParticulaDeAtaque.transform.position = pontoDeAtaque.position; // Posiciona a partícula no ponto do ataque
+            ParticulaDeAtaque.Play(); // Toca o sistema de partículas
         }
     }
 
